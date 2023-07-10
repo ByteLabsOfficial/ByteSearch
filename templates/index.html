@@ -10,12 +10,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link href="{{url_for('static', filename='prism.css' )}}" rel="stylesheet" />
 
     <link rel="stylesheet" href="{{url_for('static', filename='styles/searchPage.css' )}}">
     <title>ByteSearch | {{ searchPrompt }}</title>
 </head>
 
-<body>
+<body data-prismjs-copy-timeout="500">
     <div class="header">
         <div class="site-logo">
             <img src="{{url_for('static', filename='images/logo.png' )}}" height="50px" />
@@ -28,8 +29,19 @@
             </button>
         </form>
     </div>
+    <div class="ai-response-container">
+        <div class="ai-logo">
+            <img src="{{url_for('static', filename='images/ai-logo.png' )}}" height="30px" />
+            <p>Generative AI is experimental. Info quality may vary.</p>
+        </div>
+        <div id="ai-response"></div>
+    </div>
     <div class="search-results">
-        <!-- {%for searchResult in searchResults%} -->
+        <!-- <pre><code class="language-css" data-prismjs-copy="Copy the C snippet!">p { color: red }</code></pre> -->
+        {% if searchResults == [] %}
+        <p>Empty</p>
+        {% else %}
+        {%for searchResult in searchResults%}
         <div class="search-result">
             <a class="result-top" href="{{ searchResult.href }}">
                 {{ searchResult.href }}
@@ -41,8 +53,28 @@
                 {{ searchResult.body }}
             </p>
         </div>
-        <!-- {%endfor%} -->
+        {%endfor%}
+        {% endif %}
     </div>
 </body>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    const fetchData = async () => {
+        var textPrompt = '{{ searchPrompt }}'
+        var markdownText = await axios.post(
+            "https://aihub.pythonanywhere.com/apis/palm",
+            {
+                input: `You're a search engine copilot, you give AI responses to keywords and questions, now answer "${textPrompt}"`,
+            }
+        );
+
+        var markdownHtml = marked.parse(markdownText.data);
+        document.getElementById('ai-response').innerHTML = markdownHtml.replaceAll("<code>", "<pre><code class='language-css'>").replaceAll("</code>", "</code></pre>");
+    }
+    fetchData();
+</script>
+<script src="{{url_for('static', filename='prism.js' )}}"></script>
 
 </html>

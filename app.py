@@ -2,6 +2,7 @@ from flask import Flask, request, render_template
 from duckduckgo_search import DDGS
 
 app = Flask(__name__)
+app.static_folder = "static"
 
 
 @app.route("/search")
