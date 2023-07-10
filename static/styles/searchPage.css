@@ -1,0 +1,138 @@
+:root {
+  --background: #181b1c;
+  --secondry-background: #373c3f;
+  --loading-background: #828282;
+  --pro-color: #f7d000;
+
+  --text: #fff;
+  --secondry-text: #b6b6b6;
+  --warning-color: #ad9100;
+  --error-color: #cc0300;
+  --border-color: rgba(182, 182, 182, 0.2);
+
+  --suggestion-color: #a2b7f4;
+  --color0: #5882bc;
+  --color1: #0fbcf6;
+  --color2: #a25629;
+  --color3: #b57877;
+  --color4: #fa833f;
+
+  --bingColor: #123bb6;
+  --bardColor: #b45872;
+  --youColor: #8045f0;
+  --dialoColor: #996f04;
+  --blenderColor: #0080f8;
+  --huggingColor: #b26d07;
+
+  --link-visited: #c58af9;
+  --border-radius: 10px;
+}
+
+body {
+  max-width: 100vw;
+  max-height: 100vw;
+  margin: 0;
+  padding: 0;
+  background-color: var(--background);
+}
+
+p {
+  color: var(--text);
+  font-family: "Lato", sans-serif;
+
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  padding: 10px;
+
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+  gap: 30px;
+}
+
+.header .site-logo {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+}
+
+.header .site-logo p {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.header .search-form {
+  flex: 1;
+}
+
+.header .search-input {
+  background-color: var(--secondry-background);
+  color: var(--text);
+
+  outline: none;
+  border: none;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+
+  padding: 7.5px;
+  padding-left: 10px;
+  height: 25px;
+
+  max-width: 95%;
+  width: 800px;
+}
+
+.header .search-button {
+  background-color: var(--color0);
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  aspect-ratio: 1;
+
+  height: 40px;
+  transition: 0.1s;
+}
+
+.header .search-button i {
+  color: var(--background);
+}
+
+.search-results {
+  padding-left: 90px;
+  padding-right: 90px;
+}
+
+.search-result {
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 800px;
+}
+
+.result-top {
+  text-decoration: none;
+  font-size: 15px;
+  font-family: "Lato", sans-serif;
+}
+
+.result-top:link {
+  color: var(--secondry-text);
+}
+
+.result-top:visited {
+  color: var(--link-visited);
+}
+
+.result-top p.result-title {
+  font-size: 22px;
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+.search-result .result-description {
+  color: var(--secondry-text);
+}
