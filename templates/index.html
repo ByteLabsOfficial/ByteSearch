@@ -10,7 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
-    <link href="{{url_for('static', filename='prism.css' )}}" rel="stylesheet" />
 
     <link rel="stylesheet" href="{{url_for('static', filename='styles/searchPage.css' )}}">
     <title>ByteSearch | {{ searchPrompt }}</title>
@@ -34,20 +33,18 @@
             <img src="{{url_for('static', filename='images/ai-logo.png' )}}" height="30px" />
             <p>Generative AI is experimental. Info quality may vary.</p>
         </div>
-        <div id="ai-response"></div>
+        <!-- <pre><code><button type="submit" class="search-button"><i class="fas fa-copy fa-lg copyicon"></i><i class="fas fa-check fa-lg checkicon"></i></button>p { color: red }</code></pre> -->
+        <div id="ai-response" class=""></div>
     </div>
     <div class="search-results">
-        <!-- <pre><code class="language-css" data-prismjs-copy="Copy the C snippet!">p { color: red }</code></pre> -->
         {% if searchResults == [] %}
-        <p>Empty</p>
+        <p class="search-error">Your search - <span>{{searchPrompt}}</span> - did not return any result</p>
         {% else %}
         {%for searchResult in searchResults%}
         <div class="search-result">
             <a class="result-top" href="{{ searchResult.href }}">
-                {{ searchResult.href }}
-                <p class="result-title">
-                    {{ searchResult.title }}
-                </p>
+                <p class="result-link">{{ searchResult.href }}</p>
+                {{ searchResult.title }}
             </a>
             <p class="result-description">
                 {{ searchResult.body }}
@@ -55,26 +52,43 @@
         </div>
         {%endfor%}
         {% endif %}
+
     </div>
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/mattboldt/typed.js/lib/typed.min.js"></script>
 <script>
+    const addButtonsToCodeTags = (string) => {
+        const regex = /(<code[^>]*>((.|[\n\r])*?)<\/code>)/gm;
+        const subst = `<code><button type="submit" class="search-button"><i class="fas fa-copy fa-lg copyicon"></i><i class="fas fa-check fa-lg checkicon"></i></button>$2</code>`;
+        return string.replace(regex, subst);
+    };
+
+
     const fetchData = async () => {
-        var textPrompt = '{{ searchPrompt }}'
+        var textPrompt = '{{ searchPrompt }}';
+        const codeSyntax = "```";
         var markdownText = await axios.post(
             "https://aihub.pythonanywhere.com/apis/palm",
             {
-                input: `You're a search engine copilot, you give AI responses to keywords and questions, now answer "${textPrompt}"`,
+                input: `You're a search engine copilot, you give short and factual AI responses to keywords and questions in a markdown format, you organize your response and add spaces and breaks between paragraphs to make it more readable, you also trim down anything you put between two ${codeSyntax} to form code or anything that requires it, now answer "${textPrompt}"`,
             }
         );
-
         var markdownHtml = marked.parse(markdownText.data);
-        document.getElementById('ai-response').innerHTML = markdownHtml.replaceAll("<code>", "<pre><code class='language-css'>").replaceAll("</code>", "</code></pre>");
+        const aiResponseDiv = document.getElementById('ai-response');
+        aiResponseDiv.classList.add("ai-loaded");
+
+        let finalString = addButtonsToCodeTags(markdownHtml);
+        // Initialize Typed.js with options
+        var typed = new Typed("#ai-response", {
+            strings: [finalString],
+            typeSpeed: 2,
+            contentType: "html",
+        });
     }
     fetchData();
 </script>
-<script src="{{url_for('static', filename='prism.js' )}}"></script>
 
 </html>
