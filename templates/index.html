@@ -62,10 +62,24 @@
 <script>
     const addButtonsToCodeTags = (string) => {
         const regex = /(<code[^>]*>((.|[\n\r])*?)<\/code>)/gm;
-        const subst = `<code><button type="submit" class="search-button"><i class="fas fa-copy fa-lg copyicon"></i><i class="fas fa-check fa-lg checkicon"></i></button>$2</code>`;
+        const subst = `<code><button type="submit" onclick="copyCode(this)" class="search-button"><i class="fas fa-copy fa-lg copyicon"></i><i class="fas fa-check fa-lg checkicon"></i></button>$2</code>`;
         return string.replace(regex, subst);
     };
 
+    const copyCode = (buttonElement) => {
+        const codeElement = buttonElement.parentElement;
+        const codeText = codeElement.textContent;
+        console.log(codeText);
+
+        // Copy the code to clipboard
+        navigator.clipboard.writeText(codeText)
+            .then(() => {
+                console.log('Code copied to clipboard');
+            })
+            .catch((error) => {
+                console.error('Failed to copy code: ', error);
+            });
+    };
 
     const fetchData = async () => {
         var textPrompt = '{{ searchPrompt }}';
