@@ -1,0 +1,39 @@
+.image-search-results {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+
+  padding: 20px;
+  background-color: var(--background);
+}
+
+.image-search-result {
+  overflow: hidden;
+
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+}
+
+.image-search-result p {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: block;
+  overflow: hidden;
+
+  color: var(--secondry-text);
+  font-size: 15px;
+  font-weight: 400;
+
+  margin-top: 5px;
+}
+
+.image-search-result img {
+  height: 180px;
+  width: auto;
+
+  display: block;
+  border-radius: 10px;
+}

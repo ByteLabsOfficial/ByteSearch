@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/imageSearch.css' )}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/searchPage.css' )}}">
+    <title>ByteSearch | {{ searchPrompt }}</title>
+</head>
+
+<body data-prismjs-copy-timeout="500">
+    <div class="header">
+        <div class="site-logo">
+            <img src="{{url_for('static', filename='images/logo.png' )}}" height="50px" />
+            <p>ByteSearch</p>
+        </div>
+        <form class="search-form" action="/image" method="get">
+            <input type="text" class="search-input" id="search-query" name="q" value="{{ searchPrompt }}">
+            <button type="submit" class="search-button">
+                <i class="fas fa-search fa-lg"></i>
+            </button>
+        </form>
+    </div>
+    <div class="image-search-results">
+        {% if searchResults == [] %}
+        <p class="search-error">Your search - <span>{{searchPrompt}}</span> - did not return any result</p>
+        {% else %}
+        {%for searchResult in searchResults%}
+        <div class="image-search-result">
+            <img src="{{searchResult.thumbnail}}" onerror="this.parentNode.parentNode.removeChild(this.parentNode);" />
+            <a href="{{searchResult.url}}">
+                <p>{{searchResult.title}}</p>
+            </a>
+        </div>
+
+        {%endfor%}
+        {% endif %}
+
+    </div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/mattboldt/typed.js/lib/typed.min.js"></script>
+
+<script>
+    function HandleImageSizing() {
+        var divs = document.getElementsByClassName("image-search-result");
+        for (var i = 0; i < divs.length; i++) {
+            var img = divs[i].getElementsByTagName("img")[0];
+            if (img.offsetWidth === 0) {
+                divs[i].style.width = "100px";
+                return;
+            }
+            divs[i].style.width = `${img.offsetWidth}px`;
+        }
+    }
+
+    // HandleImageSizing();
+    // window.onload = HandleImageSizing();
+    var imgs = document.images,
+        len = imgs.length,
+        counter = 0;
+
+    [].forEach.call(imgs, function (img) {
+        if (img.complete)
+            incrementCounter();
+        else
+            img.addEventListener('load', incrementCounter, false);
+    });
+
+    function incrementCounter() {
+        counter++;
+        if (counter === len) {
+            HandleImageSizing();
+        }
+    }
+</script>
+
+</html>
