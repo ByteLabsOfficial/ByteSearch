@@ -43,7 +43,7 @@ body {
   flex-direction: column;
 
   color: var(--text);
-  font-family: "Lato", sans-serif;
+  font-family: "Lato", "Vazirmatn", sans-serif;
 }
 
 h1,
@@ -59,7 +59,7 @@ tbody,
 tr,
 td {
   color: var(--text);
-  font-family: "Lato", sans-serif;
+  font-family: "Lato", "Vazirmatn", sans-serif;
 }
 
 table {
@@ -94,7 +94,7 @@ a {
 
 p {
   color: var(--text);
-  font-family: "Lato", sans-serif;
+  font-family: "Lato", "Vazirmatn", sans-serif;
 
   margin: 0;
   padding: 0;
@@ -103,17 +103,19 @@ p {
 .header {
   padding: 10px;
 
-  display: flex;
-  flex-direction: row;
-
-  align-items: center;
-  gap: 30px;
-
   border-bottom-left-radius: var(--border-radius);
   border-bottom-right-radius: var(--border-radius);
 
   background-color: var(--background);
   overflow-x: hidden;
+}
+
+.header .header-top {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+  gap: 30px;
 }
 
 .header .site-logo {
@@ -137,7 +139,7 @@ p {
 .header .search-input {
   background-color: var(--secondry-background);
   color: var(--text);
-  font-family: "Lato", sans-serif;
+  font-family: "Lato", "Vazirmatn", sans-serif;
   font-weight: 500;
   font-size: 15px;
 
@@ -172,6 +174,28 @@ p {
   color: var(--background);
 }
 
+.header .header-tabs {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-left: 90px;
+  margin-top: 5px;
+}
+
+.header .header-tabs a {
+  background-color: var(--ai-color1);
+  padding: 15px;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  border-radius: var(--border-radius);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.header .header-tabs a.active {
+  background-color: var(--bardColor);
+}
+
 .search-results {
   padding-left: 90px;
   padding-right: 90px;
@@ -191,7 +215,7 @@ p {
 
 .result-top {
   text-decoration: none;
-  font-family: "Lato", sans-serif;
+  font-family: "Lato", "Vazirmatn", sans-serif;
   font-size: 22px;
   font-weight: 600;
   margin-top: 5px;
@@ -201,15 +225,20 @@ p {
   color: var(--link-color);
 }
 
+.result-top .result-main-link:hover {
+  text-decoration: underline;
+}
+
 .result-top:visited {
   color: var(--link-visited);
 }
 
 .result-top .result-link {
   font-size: 15px;
-  font-family: "Lato", sans-serif;
+  font-family: "Lato", "Vazirmatn", sans-serif;
   color: var(--secondry-text);
   margin-bottom: 5px;
+  text-decoration: none !important;
 }
 
 .search-result .result-description {
@@ -258,6 +287,7 @@ pre {
 pre code {
   position: relative;
   display: block;
+  text-wrap: balance;
 }
 
 pre button {

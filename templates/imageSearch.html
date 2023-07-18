@@ -18,16 +18,22 @@
 
 <body data-prismjs-copy-timeout="500">
     <div class="header">
-        <div class="site-logo">
-            <img src="{{url_for('static', filename='images/logo.png' )}}" height="50px" />
-            <p>ByteSearch</p>
+        <div class="header-top">
+            <div class="site-logo">
+                <img src="{{url_for('static', filename='images/logo.png' )}}" height="50px" />
+                <p>ByteSearch</p>
+            </div>
+            <form class="search-form" action="/search" method="get">
+                <input type="text" class="search-input" id="search-query" name="q" value="{{ searchPrompt }}">
+                <button type="submit" class="search-button">
+                    <i class="fas fa-search fa-lg"></i>
+                </button>
+            </form>
         </div>
-        <form class="search-form" action="/image" method="get">
-            <input type="text" class="search-input" id="search-query" name="q" value="{{ searchPrompt }}">
-            <button type="submit" class="search-button">
-                <i class="fas fa-search fa-lg"></i>
-            </button>
-        </form>
+        <div class="header-tabs">
+            <a href="/search?q={{searchPrompt}}">All</a>
+            <a href="/image?q={{searchPrompt}}" class="active">Image</a>
+        </div>
     </div>
     <div class="image-search-results">
         {% if searchResults == [] %}

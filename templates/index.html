@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/searchPage.css' )}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/main.css' )}}">
+    <title>ByteSearch | {{ searchPrompt }}</title>
+</head>
+
+<body>
+    <div class="main-search-intro-container">
+        <div class="intro-header">
+            <div class="header-top">
+                <div class="site-logo">
+                    <img src="{{url_for('static', filename='images/logo.png' )}}" height="100px" />
+                    <p>ByteSearch</p>
+                </div>
+                <form class="search-form" action="/search" method="get">
+                    <input type="text" class="search-input" id="search-query" name="q" placeholder="Search the web">
+                    <button type="submit" class="search-button">
+                        <i class="fas fa-search fa-lg"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="news-container" id="news-container">
+            <div class="news-provider">
+                <img src="{{url_for('static', filename='images/Logo_Payiz2.png' )}}" />
+                <p>Powered by Allameh News</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="https://allamehnews.github.io/news-database.js"></script>
+<script>
+    const flip = (data) => Object.fromEntries(
+        Object
+            .entries(data)
+            .map(([key, value]) => [value, key])
+    );
+    newsContainer = document.getElementById("news-container");
+    const reversedKeys = Object.keys(news_data).reverse();
+    reversedKeys.forEach(key => {
+        const article = news_data[key];
+        if (article.page === "none") {
+            newsContainer.innerHTML += `<div class="article" dir="rtl">
+                <img src="https://allamehnews.github.io/${article.image.slice(1)}" />
+                <div class="article-content">
+                    <p class="title">${article.title}</p>
+                    <p class="description">${article.description}</p>
+                    <p class="date">${article.date}</p>
+                </div>
+            </div>`
+            return;
+        }
+        newsContainer.innerHTML += `<a class="article" dir="rtl" href="https://allamehnews.github.io/${article.page.slice(1)}">
+                <img src="https://allamehnews.github.io/${article.image.slice(1)}" />
+                <div class="article-content">
+                    <p class="title">${article.title}</p>
+                    <p class="description">${article.description}</p>
+                    <p class="date">${article.date}</p>
+                </div>
+            </a>`
+
+    });
+</script>
+
+</html>
