@@ -1,9 +1,6 @@
 from flask import Flask, request, render_template
 from duckduckgo_search import DDGS
 
-import requests
-from bs4 import BeautifulSoup
-
 app = Flask(__name__)
 app.static_folder = "static"
 

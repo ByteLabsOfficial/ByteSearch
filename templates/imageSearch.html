@@ -41,7 +41,10 @@
         {% else %}
         {%for searchResult in searchResults%}
         <div class="image-search-result">
-            <img src="{{searchResult.thumbnail}}" onerror="this.parentNode.parentNode.removeChild(this.parentNode);" />
+            <a href="{{searchResult.image}}">
+                <img src="{{searchResult.thumbnail}}"
+                    onerror="this.parentNode.parentNode.removeChild(this.parentNode);" />
+            </a>
             <a href="{{searchResult.url}}">
                 <p>{{searchResult.title}}</p>
             </a>

@@ -18,10 +18,10 @@
 <body data-prismjs-copy-timeout="500">
     <div class="header">
         <div class="header-top">
-            <div class="site-logo">
+            <a class="site-logo" href="/">
                 <img src="{{url_for('static', filename='images/logo.png' )}}" height="50px" />
                 <p>ByteSearch</p>
-            </div>
+            </a>
             <form class="search-form" action="/search" method="get">
                 <input type="text" class="search-input" id="search-query" name="q" value="{{ searchPrompt }}">
                 <button type="submit" class="search-button">

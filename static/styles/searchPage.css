@@ -62,6 +62,10 @@ td {
   font-family: "Lato", "Vazirmatn", sans-serif;
 }
 
+h2 {
+  margin-top: 5px;
+}
+
 table {
   border-collapse: separate;
   border: solid var(--text) 1px;
@@ -205,6 +209,8 @@ p {
 
   border-top-right-radius: var(--border-radius);
   border-top-left-radius: var(--border-radius);
+
+  overflow-x: hidden;
 }
 
 .search-result {
@@ -239,6 +245,7 @@ p {
   color: var(--secondry-text);
   margin-bottom: 5px;
   text-decoration: none !important;
+  word-wrap: break-word;
 }
 
 .search-result .result-description {
@@ -342,4 +349,34 @@ pre button i {
 .search-error span {
   color: var(--text);
   font-weight: 600;
+}
+
+@media screen and (max-width: 600px) {
+  .ai-response-container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .header-top {
+    flex-direction: column !important;
+    gap: 0px !important;
+  }
+
+  .header .search-input {
+    width: 70vw;
+  }
+
+  .header .header-top {
+    grid-area: 0px;
+  }
+
+  .header-tabs {
+    margin-left: 10px !important;
+    margin-top: 10px !important;
+  }
+
+  .search-results {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
 }
