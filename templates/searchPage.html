@@ -47,7 +47,21 @@
             <p>Generative AI is experimental. Info quality may vary.</p>
         </div>
         <!-- <pre><code><button type="submit" class="search-button"><i class="fas fa-copy fa-lg copyicon"></i><i class="fas fa-check fa-lg checkicon"></i></button>p { color: red }</code></pre> -->
-        <div id="ai-response" class=""></div>
+        <div class="ai-response-parent">
+            <div id="ai-response" class=""></div>
+            <div class="answer-container">
+                {% for answer in answerLst[0:3] %}
+
+                <a class="answer" href="{{answer.url}}">
+                    {% if answer.icon != None%}
+                    <img src="{{answer.icon}}" />
+                    {% endif %}
+                    <p>{{answer.text}}</p>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+
     </div>
     <div class="search-results">
         {% if searchResults == [] %}
@@ -106,14 +120,15 @@
         var markdownHtml = marked.parse(markdownText.data);
         const aiResponseDiv = document.getElementById('ai-response');
         aiResponseDiv.classList.add("ai-loaded");
+        aiResponseDiv.innerHTML = markdownHtml;
 
         let finalString = addButtonsToCodeTags(markdownHtml);
         // Initialize Typed.js with options
-        var typed = new Typed("#ai-response", {
-            strings: [finalString],
-            typeSpeed: 2,
-            contentType: "html",
-        });
+        // var typed = new Typed("#ai-response", {
+        //     strings: [finalString],
+        //     typeSpeed: 2,
+        //     contentType: "html",
+        // });
     }
     fetchData();
 </script>

@@ -67,7 +67,7 @@
 }
 
 .intro-header .search-button {
-  background-color: var(--color0);
+  background-color: var(--secondary-color);
   border: none;
   outline: none;
 

@@ -15,10 +15,13 @@ def get_search_results():
     searchPrompt = request.args.get('q')
 
     searchResults = []
+    answerLst = []
     with DDGS() as ddgs:
-        for r in ddgs.text(searchPrompt, region='wt-wt', safesearch='Off', timelimit='y'):
+        for r in ddgs.text(searchPrompt, region='wt-wt', safesearch='on', timelimit='y', backend="lite"):
             searchResults.append(r)
-    return render_template("searchPage.html", searchPrompt=searchPrompt, searchResults=searchResults)
+        for r in ddgs.answers(searchPrompt):
+            answerLst.append(r)
+    return render_template("searchPage.html", searchPrompt=searchPrompt, searchResults=searchResults, answerLst=answerLst)
 
 
 @app.route("/image")
