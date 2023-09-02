@@ -47,9 +47,10 @@ li,
 ul,
 tbody,
 tr,
-td {
+td,
+a {
   color: var(--text);
-  font-family: "Lato", "Vazirmatn", sans-serif;
+  font-family: "Noto Sans", "Vazirmatn", sans-serif;
 }
 
 h2 {

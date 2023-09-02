@@ -11,6 +11,7 @@
 
 .intro-header {
   padding: 10px;
+  padding-top: 20px;
 
   border-bottom-left-radius: var(--border-radius);
   border-bottom-right-radius: var(--border-radius);
@@ -29,7 +30,7 @@
   /* background-color: var(--secondry-background); */
   border-radius: 0.5rem;
 
-  max-width: 400px;
+  max-width: 335px;
 }
 
 .intro-header .site-logo {
@@ -43,11 +44,14 @@
   border-top-right-radius: 0.5rem;
 
   padding: 10px;
+  width: 100%;
+  justify-content: center;
+  padding: 0;
 }
 
 .intro-header .site-logo img {
-  max-width: 280px;
-  width: 100%;
+  /* max-width: 100%; */
+  width: 250px;
 }
 
 .intro-header .site-logo p {
@@ -61,7 +65,7 @@
   gap: 0.2rem;
   max-width: 90vw;
   width: 100%;
-  max-width: 300px;
+  max-width: 335px;
 }
 
 .intro-header .search-input-container {
@@ -135,7 +139,7 @@
   gap: 10px;
 
   overflow: auto;
-  height: 60vh;
+  /* height: 60vh; */
   /* flex: 1; */
   width: fit-content;
   padding-right: 10px;
@@ -160,23 +164,33 @@
 }
 
 .article {
-  width: 250px;
-  background-color: var(--secondry-background);
+  max-width: 335px;
   border-radius: var(--border-radius-small);
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 15px;
 }
 
 .article img {
-  height: 100px;
-  width: 250px;
+  width: 100%;
   object-fit: cover;
-
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  aspect-ratio: 1.6 / 1;
+  border-radius: 0.5rem;
+  border-bottom-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
 }
 
 .article .article-content {
-  padding-right: 10px;
-  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  background-color: var(--secondry-background);
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
 }
 
 .article .article-content p {
@@ -184,12 +198,14 @@
 }
 
 .article .article-content p.title {
-  font-size: 20px;
   font-weight: 700;
+
+  font-size: 1rem;
 }
 
 .article .article-content p.description {
-  color: var(--secondry-text);
+  font-size: 0.9rem;
+  color: rgb(255 255 255 / 50%);
 }
 
 .article .article-content p.date {
@@ -199,9 +215,101 @@
   color: var(--secondry-text);
 }
 
-@media screen and (max-width: 300px) {
+.intro-header .links-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.intro-header .links-container a {
+  color: rgb(255 255 255 / 80%);
+  font-size: 0.75rem;
+  text-decoration: none;
+}
+
+.apps-container {
+  display: flex;
+  gap: 0.2rem;
+  margin: 3rem 0rem;
+
+  max-width: 335px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.apps-container a:first-child {
+  border-top-left-radius: 0.5rem;
+}
+
+.apps-container a:nth-child(2) {
+  border-top-right-radius: 0.5rem;
+}
+
+.apps-container a:nth-child(7) {
+  border-bottom-left-radius: 0.5rem;
+}
+
+.apps-container a:last-child {
+  border-bottom-right-radius: 0.5rem;
+}
+
+.apps-container a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--secondry-background);
+  padding: 1rem 0.75rem;
+  border-radius: 0.2rem;
+  text-decoration: none;
+
+  width: 42%;
+}
+
+.apps-container a i {
+  height: 2rem;
+  width: 2rem;
+  flex-shrink: 0;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  text-align: center;
+}
+
+.apps-container a .label {
+  /* width: calc(100% - 2.5rem); */
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  /* align-self: flex-start; */
+  overflow: hidden;
+}
+
+.apps-container > a > .label > .name {
+  font-size: 0.74rem;
+
+  color: rgb(255 255 255);
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  margin: 0px;
+}
+
+.apps-container a .label .url {
+  font-size: 0.7rem;
+  color: rgb(255 255 255 / 50%);
+}
+
+.apps-container a .label > :is(.name, .url) {
+  width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 600px) {
   .intro-header {
     padding: 0px;
+    padding-top: 0px;
   }
   .header-top,
   .search-form {
