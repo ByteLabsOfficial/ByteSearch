@@ -184,10 +184,10 @@ p {
   padding-right: 10px;
 }
 
-.intro-header .search-input:-webkit-autofill,
-.intro-header .search-input:-webkit-autofill:hover,
-.intro-header .search-input:-webkit-autofill:focus,
-.intro-header .search-input:-webkit-autofill:active {
+.header .search-input:-webkit-autofill,
+.header .search-input:-webkit-autofill:hover,
+.header .search-input:-webkit-autofill:focus,
+.header .search-input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px var(--secondry-background) inset !important;
 }
 

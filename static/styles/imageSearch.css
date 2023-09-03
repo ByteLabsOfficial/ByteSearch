@@ -16,7 +16,12 @@
   margin-right: 10px;
   margin-bottom: 20px;
 
-  max-width: 300px;
+  background-color: var(--secondry-background);
+  border-radius: 0.5rem;
+  padding: 5px;
+
+  max-width: 200px;
+  width: calc(100vw / 3);
 }
 
 .image-search-result p {
@@ -34,8 +39,9 @@
 
 .image-search-result img {
   height: 180px;
-  width: auto;
+  width: 100%;
+  object-fit: cover;
 
   display: block;
-  border-radius: 10px;
+  border-radius: 0.5rem;
 }

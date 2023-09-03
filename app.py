@@ -42,4 +42,4 @@ def get_image_results():
         )
         for r in ddgs_images_gen:
             searchResults.append(r)
-    return render_template("imageSearch.html", searchPrompt=searchPrompt, searchResults=searchResults)
+    return render_template("imageSearch.html", searchPrompt=searchPrompt, searchResults=searchResults[0:100])

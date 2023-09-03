@@ -29,8 +29,8 @@
                 <form class="search-form" action="/search" method="get">
                     <div class="search-input-container">
                         <img src="{{url_for('static', filename='images/II Logo Transparent.png' )}}" />
-                        <input type="text" class="search-input" id="search-query" name="q"
-                            placeholder="Search anything">
+                        <input type="text" class="search-input" id="search-query" name="q" placeholder="Search anything"
+                            value="{{searchPrompt}}">
                     </div>
                     <button type="submit" class="search-button">
                         <i class="fas fa-search"></i>
