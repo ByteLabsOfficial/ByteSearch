@@ -106,6 +106,13 @@
   padding-right: 10px;
 }
 
+.intro-header .search-input:-webkit-autofill,
+.intro-header .search-input:-webkit-autofill:hover,
+.intro-header .search-input:-webkit-autofill:focus,
+.intro-header .search-input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px var(--secondry-background) inset !important;
+}
+
 .intro-header .search-button {
   background-color: var(--secondry-background);
   border: none;

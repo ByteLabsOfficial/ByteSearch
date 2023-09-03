@@ -25,21 +25,24 @@
 <body data-prismjs-copy-timeout="500">
     <div class="header">
         <div class="header-top">
-            <a class="site-logo" href="/">
-                <img src="{{url_for('static', filename='images/logo.png' )}}" height="50px" />
-                <p>ByteSearch</p>
-            </a>
-            <form class="search-form" action="/search" method="get">
-                <input type="text" class="search-input" id="search-query" name="q" value="{{ searchPrompt }}">
-                <button type="submit" class="search-button">
-                    <i class="fas fa-search fa-lg"></i>
-                </button>
-            </form>
+            <div class="header-container">
+                <form class="search-form" action="/search" method="get">
+                    <div class="search-input-container">
+                        <img src="{{url_for('static', filename='images/II Logo Transparent.png' )}}" />
+                        <input type="text" class="search-input" id="search-query" name="q"
+                            placeholder="Search anything">
+                    </div>
+                    <button type="submit" class="search-button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+                <div class="header-tabs">
+                    <a href="/search?q={{searchPrompt}}" class="active">All</a>
+                    <a href="/image?q={{searchPrompt}}">Image</a>
+                </div>
+            </div>
         </div>
-        <div class="header-tabs">
-            <a href="/search?q={{searchPrompt}}" class="active">All</a>
-            <a href="/image?q={{searchPrompt}}">Image</a>
-        </div>
+
     </div>
     <div class="ai-response-container">
         <div class="ai-logo">
@@ -85,7 +88,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/mattboldt/typed.js/lib/typed.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/gh/mattboldt/typed.js/lib/typed.min.js"></script> -->
 <script>
     const addButtonsToCodeTags = (string) => {
         const regex = /(<code[^>]*>((.|[\n\r])*?)<\/code>)/gm;
