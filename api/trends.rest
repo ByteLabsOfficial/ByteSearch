@@ -1,0 +1,6 @@
+GET http://bytesearch.pythonanywhere.com/trending
+Content-Type: application/json
+
+{
+  
+}
