@@ -31,6 +31,9 @@
                         <img src="{{url_for('static', filename='images/II Logo Transparent.png' )}}" />
                         <input type="text" class="search-input" id="search-query" name="q" placeholder="Search anything"
                             value="{{searchPrompt}}">
+
+                        <input type="text" class="search-input" style="display: none;" id="userid" name="userid"
+                            placeholder="" value="{{userid}}">
                     </div>
                     <button type="submit" class="search-button">
                         <i class="fas fa-search"></i>
