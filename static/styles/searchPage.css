@@ -320,7 +320,7 @@ p {
   flex-direction: row;
   gap: 10px;
   flex-wrap: wrap;
-  /* height: fit-content; */
+  height: fit-content;
   width: 35%;
 }
 
