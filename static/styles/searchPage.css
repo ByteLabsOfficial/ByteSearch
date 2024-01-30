@@ -217,7 +217,7 @@ p {
   flex-direction: row;
   gap: 0.2rem;
   /* margin-left: 90px; */
-  margin-top: 0.2rem;
+  margin-top: 5px;
   justify-content: flex-start;
 }
 
@@ -320,7 +320,7 @@ p {
   flex-direction: row;
   gap: 10px;
   flex-wrap: wrap;
-  height: fit-content;
+  /* height: fit-content; */
   width: 35%;
 }
 
@@ -331,11 +331,11 @@ p {
   text-overflow: ellipsis;
   overflow: auto;
   /* background: violet; */
-  flex: 1;
+  /* flex: 1; */
   background-color: var(--secondry-background);
   /* padding: 15px; */
   border-radius: 0.5rem;
-  height: fit-content;
+  height: 100%;
 
   text-decoration: none;
   color: var(--text);

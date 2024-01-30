@@ -24,6 +24,8 @@
     <meta name="msapplication-TileColor" content="#2b5797">
     <meta name="theme-color" content="#ffffff">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
     <link rel="stylesheet" href="{{url_for('static', filename='styles/searchPage.css' )}}">
     <link rel="stylesheet" href="{{url_for('static', filename='styles/main.css' )}}">
     <title>ByteSearch</title>
@@ -33,10 +35,8 @@
     <div class="main-search-intro-container">
         <div class="intro-header">
             <div class="links-container">
-                <a href="/about">About</a>
+                <a href="https://github.com/ByteLabsOfficial/ByteSearch">Github</a>
                 <a href="/privacy">Privacy</a>
-                <a href="https://palmix.pythonanywhere.com">Palmix</a>
-                <a href="https://blackfund.pythonanywhere.com">BlackFund</a>
             </div>
             <div class="header-top">
                 <div class="site-logo">
@@ -47,9 +47,6 @@
                         <img src="{{url_for('static', filename='images/II Logo Transparent.png' )}}" />
                         <input type="text" class="search-input" id="search-query" name="q"
                             placeholder="Search anything">
-
-                        <input type="text" class="search-input" style="display: none;" id="userid" name="userid"
-                            placeholder="" value="{{userid}}">
                     </div>
                     <button type="submit" class="search-button">
                         <i class="fas fa-search"></i>
@@ -124,7 +121,7 @@
     </div>
 </body>
 
-<script src="https://kit.fontawesome.com/06367c0cef.js" crossorigin="anonymous"></script>
+<!-- <script src="https://kit.fontawesome.com/06367c0cef.js"></script> -->
 <script src="https://allamehnews.github.io/news-database.js"></script>
 <script>
     const flip = (data) => Object.fromEntries(

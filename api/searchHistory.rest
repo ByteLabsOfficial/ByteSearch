@@ -1,1 +1,0 @@
-POST https://bytesearch.pythonanywhere.com/getsearchhistory?userid=843599260

@@ -31,9 +31,6 @@
                         <img src="{{url_for('static', filename='images/II Logo Transparent.png' )}}" />
                         <input type="text" class="search-input" id="search-query" name="q" placeholder="Search anything"
                             value="{{searchPrompt}}">
-
-                        <input type="text" class="search-input" style="display: none;" id="userid" name="userid"
-                            placeholder="" value="{{userid}}">
                     </div>
                     <button type="submit" class="search-button">
                         <i class="fas fa-search"></i>
@@ -48,10 +45,10 @@
 
     </div>
     <div class="ai-response-container">
-        <div class="ai-logo">
+        <!-- <div class="ai-logo">
             <img src="{{url_for('static', filename='images/ai-logo.png' )}}" height="30px" />
             <p>Generative AI is experimental. Info quality may vary.</p>
-        </div>
+        </div> -->
         <!-- <pre><code><button type="submit" class="search-button"><i class="fas fa-copy fa-lg copyicon"></i><i class="fas fa-check fa-lg checkicon"></i></button>p { color: red }</code></pre> -->
         <div class="ai-response-parent">
             <div id="ai-response" class=""></div>
@@ -90,7 +87,7 @@
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> -->
 <!-- <script src="https://cdn.jsdelivr.net/gh/mattboldt/typed.js/lib/typed.min.js"></script> -->
 <script>
     const addButtonsToCodeTags = (string) => {
@@ -136,7 +133,7 @@
         //     contentType: "html",
         // });
     }
-    fetchData();
+    // fetchData();
 </script>
 
 </html>
