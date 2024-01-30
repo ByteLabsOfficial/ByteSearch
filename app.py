@@ -20,20 +20,19 @@ def main_search_page():
 
 @app.route("/search")
 def get_search_results():
+    searchCounter = eval(open(f"{rootPath}searchCounter.txt", "r").read())
+    searchCounter += 1
+    open(f"{rootPath}searchCounter.txt", "w").write(str(searchCounter))
+
     searchPrompt = request.args.get('q')
 
     searchResults = []
     answerLst = []
     with DDGS() as ddgs:
-        searchResults = [r for r in ddgs.text(searchPrompt, max_results=20)]
+        searchResults = [r for r in ddgs.text(
+            searchPrompt, max_results=20, safesearch="off")]
         for r in ddgs.answers(searchPrompt):
             answerLst.append(r)
-
-    with open(f"{rootPath}search.json", "r") as file:
-        data = json.load(file)
-
-    with open(f"{rootPath}search.json", "w") as file:
-        json.dump(data, file, indent=2, separators=(",", ": "))
 
     return render_template("searchPage.html", searchPrompt=searchPrompt, searchResults=searchResults, answerLst=answerLst)
 
@@ -52,6 +51,10 @@ def get_search_results_api():
 
 @app.route("/image")
 def get_image_results():
+    searchCounter = eval(open(f"{rootPath}searchCounter.txt", "r").read())
+    searchCounter += 1
+    open(f"{rootPath}searchCounter.txt", "w").write(str(searchCounter))
+
     searchPrompt = request.args.get('q')
 
     searchResults = []
@@ -60,7 +63,7 @@ def get_image_results():
         ddgs_images_gen = ddgs.images(
             keywords,
             region="wt-wt",
-            safesearch="Off",
+            safesearch="off",
             size=None,
             type_image=None,
             layout=None,
